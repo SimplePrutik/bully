@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\dimod\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\dimod\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_bully.-1032312302.00" t="ExcludeRecursive" />
+    <e p="C:\Users\dimod\Desktop\bully" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Button.cs" t="Include" />
+          <e p="IState.cs" t="Include" />
+          <e p="NPCIdle" t="Include">
+            <e p="IdleNPC.cs" t="Include" />
+            <e p="States" t="Include">
+              <e p="IdleState.cs" t="Include" />
+            </e>
+          </e>
+          <e p="State.cs" t="Include" />
+          <e p="StateMachine.cs" t="Include" />
+          <e p="Unit.cs" t="Include" />
+        </e>
+      </e>
+      <e p="bully.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
