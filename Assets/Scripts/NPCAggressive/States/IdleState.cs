@@ -12,7 +12,8 @@
             switch (buttonName)
             {
                 case "Chase":
-                    ((AggressiveNPC)unit).fsm.SetState("chase");
+                    if ( ((AggressiveNPC)unit).target.gameObject.activeInHierarchy)
+                        ((AggressiveNPC)unit).fsm.SetState("chase");
                     break;
             }
         }
