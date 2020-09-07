@@ -26,7 +26,7 @@ public class StateMachine
 
     public void SetState(string stateName)
     {
-        var state = _states.First(x => x.stateName.Equals(stateName));
+        var state = _states.FirstOrDefault(x => x.stateName.Equals(stateName));
         if (state != null)
         {
             currentState?.ExitState();

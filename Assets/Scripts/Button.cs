@@ -9,6 +9,6 @@ public class Button : MonoBehaviour
     
     public static Action<string> OnButtonClicked = delegate(string s) {  };
 
-    void OnClicked() => OnButtonClicked(buttonName);
+    public void OnClicked() => OnButtonClicked(buttonName);
 
 }

@@ -4,10 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using NPCIdle.States;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class IdleNPC : Unit
 {
-    private StateMachine fsm;
+    [NonSerialized]
+    public StateMachine fsm;
 
     public float moveSpeed = 10;
 
@@ -18,6 +20,8 @@ public class IdleNPC : Unit
         fsm.SetState("idle");
     }
 
+    #region enable_disable
+    
     private void OnEnable()
     {
         Button.OnButtonClicked += ButtonHandler;
@@ -27,35 +31,36 @@ public class IdleNPC : Unit
     {
         Button.OnButtonClicked -= ButtonHandler;
     }
+    
+
+    #endregion
+    
 
     void ButtonHandler(string buttonName) => fsm.ButtonHandler(buttonName);
 
-    // void EventHandler(params object[] args) => fsm.EventHandler(args);
-
-    public void Do(string command)
+    public IEnumerator Patrol()
     {
-        switch (command)
+        var nextPos = transform.localPosition;
+        while (true)
         {
-            case "Patrol":
-                StartCoroutine(Move(new Vector2(0.25f, 0.25f)));
-                break;
-        }
-    }
-
-    IEnumerator Move(Vector2 position)
-    {
-        var pos = new Vector3(position.x, transform.localPosition.y, position.y);
-        while (Vector3.Distance(transform.localPosition, pos) > 0.05f)
-        {
+            if (Vector3.Distance(transform.localPosition, nextPos) < 0.05f)
+            {
+                nextPos = new Vector3(Random.value - 0.5f, nextPos.y, Random.value - 0.5f);
+                yield return new WaitForSeconds(Random.Range(1f,2f));
+            }
             var current_pos = transform.localPosition;
-            var motion_vec = pos - current_pos;
+            var motion_vec = nextPos - current_pos;
             var step = motion_vec.normalized * (Time.deltaTime * moveSpeed);
             transform.localPosition += step;
             if (step.magnitude > motion_vec.magnitude)
-                transform.localPosition = pos;
+                transform.localPosition = nextPos;
             yield return null;
         }
+    }
 
-        Debug.Log("Move is over");
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.parent != transform && other.GetComponent<Bullet>() != null)
+            gameObject.SetActive(false);
     }
 }

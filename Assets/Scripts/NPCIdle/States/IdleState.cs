@@ -6,6 +6,7 @@ namespace NPCIdle.States
 {
     public class IdleState : State
     {
+        
 
         public IdleState(string stateName, IdleNPC unit)
         {
@@ -15,13 +16,12 @@ namespace NPCIdle.States
         
         public override void EnterState()
         {
-            ((IdleNPC)unit).Do("Patrol");
+            unit.StartCoroutine(((IdleNPC)unit).Patrol());
         }
 
         public override void ExitState()
         {
-            //stop patroling or smtg
+            unit.StopAllCoroutines();
         }
-
     }
 }

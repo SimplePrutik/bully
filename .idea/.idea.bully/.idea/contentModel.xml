@@ -7,8 +7,17 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="Bullet.cs" t="Include" />
           <e p="Button.cs" t="Include" />
           <e p="IState.cs" t="Include" />
+          <e p="NPCAggressive" t="Include">
+            <e p="AggressiveNPC.cs" t="Include" />
+            <e p="States" t="Include">
+              <e p="ChaseState.cs" t="Include" />
+              <e p="IdleState.cs" t="Include" />
+              <e p="ShootingState.cs" t="Include" />
+            </e>
+          </e>
           <e p="NPCIdle" t="Include">
             <e p="IdleNPC.cs" t="Include" />
             <e p="States" t="Include">
